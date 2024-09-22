@@ -2,6 +2,7 @@ import streamlit as st
 import json
 import pandas as pd
 import numpy as np
+import streamlit.components.v1 as components
 
 # Custom CSS for styling
 st.markdown("""
@@ -141,6 +142,6 @@ if display_option == "Table":
     df = df.drop(columns=["price_breakdown", "latitude", "longitude"])
     st.write(df.to_html(escape=False), unsafe_allow_html=True)
 else:
-    st.map(pd.DataFrame(filtered_providers, columns=["latitude", "longitude"]))
+    components.iframe("http://localhost:3000", height=500)
 
 # Note: In a real application, you would replace the mock data with actual data from TiC and other sources.
